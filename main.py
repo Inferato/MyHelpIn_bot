@@ -68,16 +68,7 @@ def main():
             # today += 1
 
         elif last_chat_text.lower() == commands:
-            greet_bot.send_message(last_chat_id, 'Введите город: ')
-            greet_bot.get_updates(new_offset)
-
-            last_update = greet_bot.get_last_update()
-
-            last_update_id = last_update['update_id']
-            last_chat_text = last_update['message']['text']
-            last_chat_id = last_update['message']['chat']['id']
-            last_chat_name = last_update['message']['chat']['first_name']
-            resp = GetWeather(last_chat_text)
+            resp = GetWeather("Kharkiv")
             descpiption = resp['weather'][0]['description']
             temp = resp['main']['temp']
             feels_like = resp['main']['feels_like']
@@ -85,7 +76,7 @@ def main():
             temp_max = resp['main']['temp_max']
             name = resp['name']
             weather = "Выбранный город:  {}".format(name) + \
-                      "\n descpiption \n температура: {}С".format(temp) + \
+                      "\n" + descpiption + "\n температура: {}С".format(temp) + \
                 "\n чувствуется как: {}C".format(feels_like) + \
                 "\n минимальная температура: {}C".format(temp_min) + \
                 "\n максимальная температура: {}C".format(temp_max)
