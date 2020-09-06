@@ -1,6 +1,6 @@
 import requests
 import datetime
-from .wethr import getweather
+from wethr import getweather
 token = "1037730614:AAG4BR2gc9b157zZhbxVUYhtmg55oaAindU"
 
 
@@ -36,8 +36,8 @@ class BotHandler:
 
 greet_bot = BotHandler(token)
 greetings = ('здравствуй', 'привет', 'ку', 'здорово')
-commands = 'погода'
 now = datetime.datetime.now()
+
 
 def main():
     new_offset = None
