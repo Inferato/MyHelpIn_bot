@@ -1,6 +1,6 @@
 import requests
 import datetime
-
+from .Weather import GetWeather
 token = "1212115740:AAHIOelpijp3sCTrmg8e9W498nem_vNQBGA"
 
 
@@ -36,6 +36,7 @@ class BotHandler:
 
 greet_bot = BotHandler(token)
 greetings = ('здравствуй', 'привет', 'ку', 'здорово')
+commands = 'Погода'
 now = datetime.datetime.now()
 
 
@@ -65,6 +66,30 @@ def main():
         elif last_chat_text.lower() in greetings and today == now.day and 17 <= hour < 23:
             greet_bot.send_message(last_chat_id, 'Добрый вечер, {}'.format(last_chat_name))
             # today += 1
+
+        elif last_chat_text.lower() == commands:
+            greet_bot.send_message(last_chat_id, 'Введите город: ')
+            greet_bot.get_updates(new_offset)
+
+            last_update = greet_bot.get_last_update()
+
+            last_update_id = last_update['update_id']
+            last_chat_text = last_update['message']['text']
+            last_chat_id = last_update['message']['chat']['id']
+            last_chat_name = last_update['message']['chat']['first_name']
+            resp = GetWeather(last_chat_text)
+            descpiption = resp['weather'][0]['description']
+            temp = resp['main']['temp']
+            feels_like = resp['main']['feels_like']
+            temp_min = resp['main']['temp_min']
+            temp_max = resp['main']['temp_max']
+            name = resp['name']
+            weather = "Выбранный город:  {}".format(name) + \
+                      "\n descpiption \n температура: {}С".format(temp) + \
+                "\n чувствуется как: {}C".format(feels_like) + \
+                "\n минимальная температура: {}C".format(temp_min) + \
+                "\n максимальная температура: {}C".format(temp_max)
+            greet_bot.send_message(last_chat_id, 'Прогноз погоды на сегодня: {}'.format(weather))
 
         new_offset = last_update_id + 1
 
