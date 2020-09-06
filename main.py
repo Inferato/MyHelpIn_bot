@@ -1,5 +1,6 @@
 import requests
 import datetime
+from .wethr import getweather
 token = "1037730614:AAG4BR2gc9b157zZhbxVUYhtmg55oaAindU"
 
 
