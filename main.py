@@ -78,7 +78,7 @@ def main():
             greet_bot.send_message(last_chat_id, 'Добрый вечер, {}'.format(last_chat_name))
             # today += 1
 
-        elif last_chat_text.lower() == "Погода":
+        elif last_chat_text.lower() == "погода":
             resp = getweather()
             descpiption = resp['weather'][0]['description']
             temp = resp['main']['temp']
