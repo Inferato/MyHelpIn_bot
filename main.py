@@ -81,6 +81,7 @@ def main():
                 "\n максимальная температура: {}C".format(temp_max)
             greet_bot.send_message(last_chat_id, 'Прогноз погоды на сегодня: \n {}'.format(weather))
 
+
         new_offset = last_update_id + 1
 
 
