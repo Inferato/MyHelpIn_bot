@@ -10,6 +10,10 @@ class BotHandler:
         self.token = token
         self.api_url = "https://api.telegram.org/bot{}/".format(token)
 
+    def deletewebhook(self):
+        method = 'deleteWebhook'
+        resp = requests.get(self.api_url+method)
+
     def get_updates(self, offset=None, timeout=30):
         method = 'getUpdates'
         params = {'timeout': timeout, 'offset': offset}
@@ -42,6 +46,7 @@ def main():
     hour = now.hour
 
     while True:
+        greet_bot.deletewebhook()
         greet_bot.get_updates(new_offset)
 
         last_update = greet_bot.get_last_update()
@@ -78,8 +83,7 @@ def main():
                     "\n максимальная температура: {}C".format(temp_max)
                 greet_bot.send_message(last_chat_id, 'Прогноз погоды на сегодня: \n {}'.format(weather))
 
-
-            # new_offset = last_update_id + 1
+            new_offset = last_update_id + 1
 
 
 if __name__ == '__main__':
