@@ -3,6 +3,7 @@ import datetime
 from wethr import getweather
 from googletrans import Translator
 
+# it`s a pet proj for study
 token = "1037730614:AAG4BR2gc9b157zZhbxVUYhtmg55oaAindU"
 translator = Translator()
 
