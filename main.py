@@ -6,6 +6,7 @@ from googletrans import Translator
 token = "1037730614:AAG4BR2gc9b157zZhbxVUYhtmg55oaAindU"
 translator = Translator()
 
+
 class BotHandler:
 
     def __init__(self, token):
