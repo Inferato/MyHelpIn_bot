@@ -77,7 +77,7 @@ def main():
                         temp_min = resp['main']['temp_min']
                         temp_max = resp['main']['temp_max']
                         name = resp['name']
-                        weather = "Выбранный город:  {}".format(name) + \
+                        weather = "Выбранный Вами город:  {}".format(name) + \
                                   "\n " + descpiption + "\n температура: {}С".format(temp) + \
                             "\n чувствуется как: {}C".format(feels_like) + \
                             "\n минимальная температура: {}C".format(temp_min) + \
