@@ -79,7 +79,7 @@ def main():
                         name = resp['name']
                         weather = "Выбранный Вами город:  {}".format(name) + \
                                   "\n " + descpiption + "\n температура: {}С".format(temp) + \
-                            "\n чувствуется как: {}C".format(feels_like) + \
+                            "\n темппература чувствуется как: {}C".format(feels_like) + \
                             "\n минимальная температура: {}C".format(temp_min) + \
                             "\n максимальная температура: {}C".format(temp_max)
                         greet_bot.send_message(last_chat_id, 'Прогноз погоды на сейчас: \n {}'.format(weather))
